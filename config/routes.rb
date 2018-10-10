@@ -4,6 +4,18 @@ Rails.application.routes.draw do
   get 'albums/new' => 'albums#new'
   get 'albums/:id' => 'albums#show', as: :album
   post 'albums' => 'albums#create'
+  get 'signup' => 'users#new'
+  resources :users
+
+  # maps requests for the URL '/login' 
+  # to the Sessions controller's new action.
+  get '/login' => 'sessions#new'
+ 
+  # maps the URL '/login' to the Sessions controller's create action.
+  post 'login' => 'sessions#create'
+
+  # maps the URL /logout to the Sessions controller's destroy action:
+  delete 'logout' => 'sessions#destroy'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
